@@ -1,163 +1,98 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Amiri', serif;
-            text-align: right;
-            background-color: #f7f7f7;
-            line-height: 1.8;
-        }
-        .contract-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #ffffff;
-            border: 1px solid #d1d5db;
-            border-radius: 12px;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
-        }
-        h1, h2, h3, h4 {
-            border-right: 4px solid #004aad;
-            padding-right: 15px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            color: #1f2937;
-        }
-        .main-heading {
-            border-right: 6px solid #004aad !important;
-        }
-        .clause-item {
-            margin-bottom: 10px;
-            padding: 10px;
-            border-right: 2px solid #004aad; 
-            background-color: #fafafa;
-            border-radius: 6px;
-        }
-        .signature-line {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            padding: 0 20px;
-            flex-wrap: wrap;
-        }
-        .signature-block {
-            width: 48%;
-            min-width: 300px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .signature-block hr {
-            margin-top: 5px;
-            border: 1px solid #333;
-        }
-        .no-bullets {
-            list-style: none;
-            padding-right: 0;
-        }
-        .data-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: right;
-        }
-        .data-table th {
-            background-color: #004aad;
-            color: white;
-            font-weight: 600;
-        }
-        .data-table tr:nth-child(even) {
-            background-color: #f9fafb;
-        }
-        .data-table tr:last-child td {
-            font-weight: bold;
-            background-color: #eef3ff;
-            border-top: 2px solid #004aad;
-        }
-        .total-row td {
-            background-color: #e0e7ff !important;
-            color: #111827;
-            font-weight: 700 !important;
-        }
-    </style>
-    <title>مسودة عقد شراكة استثمارية</title>
-</head>
-<body dir="rtl">
-    <div class="contract-container">
-        <h1 class="text-3xl main-heading">مسودة عقد شراكة واستثمار في مشروع AMARSOFT الإقليمي</h1>
+<style>
+.contract-section {
+    font-family: 'Amiri', serif;
+    direction: rtl;
+    text-align: right;
+    margin: 40px auto;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    max-width: 900px;
+    padding: 25px 30px;
+    line-height: 1.8;
+}
+.contract-section h2 {
+    color: #00264d;
+    border-right: 4px solid #00264d;
+    padding-right: 12px;
+    margin-bottom: 20px;
+}
+.contract-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.contract-section th {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    font-weight: 700;
+    text-align: right;
+}
+.contract-section td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+}
+.contract-section tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.contract-section .total-row td {
+    background-color: #eef2f7;
+    font-weight: 700;
+    border-top: 2px solid #00264d;
+}
+.note-box {
+    background: #f8f8f8;
+    border-right: 3px solid #00264d;
+    padding: 10px 15px;
+    margin: 15px 0;
+    color: #333;
+}
+</style>
 
-        <h2>مقدمة</h2>
-        <p class="text-sm text-gray-700 mb-6">
-            تم تحرير هذا العقد في مدينة جدة بتاريخ 7 نوفمبر 2025 بين الطرفين المذكورين أدناه، وذلك لتنظيم العلاقة والشراكة في مشروع <strong>AMARSOFT</strong> لتطوير وإطلاق نظام تخطيط موارد المؤسسات (ERP) المتكامل في المملكة العربية السعودية ودول الخليج.
-        </p>
-
-        <h3>الطرف الأول (المطور والمشغل):</h3>
-        <ul class="no-bullets space-y-2 pr-4 mb-4 text-sm text-gray-700">
-            <li><strong>الاسم:</strong> شركة AMARSOFT</li>
-            <li><strong>ممثلها:</strong> سالم عبود سعيد بن سعد</li>
-            <li><strong>العنوان:</strong> الشارقة النهدة مكتب رقم 104 الإمارات</li>
-            <li><strong>ويشار إليها في هذا العقد باسم "AMARSOFT"</strong></li>
-        </ul>
-
-        <h3>الطرف الثاني (الممول والشريك):</h3>
-        <ul class="no-bullets space-y-2 pr-4 mb-6 text-sm text-gray-700">
-            <li><strong>الاسم:</strong> السيد/ محمد اليافعي</li>
-            <li><strong>العنوان:</strong> جدة، المملكة العربية السعودية</li>
-            <li><strong>ويشار إليه في هذا العقد باسم "المستثمر"</strong></li>
-        </ul>
-
-        <p class="text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200">
-            <strong>تمهيد:</strong> بما أن AMARSOFT تمتلك الخبرة التقنية، نظام ERP الجاهز للتطوير، وكامل حقوق الملكية الفكرية للنظام، وبما أن المستثمر يرغب في تمويل المشروع ودعمه بعلاقاته لضمان التوسع في السوق الإقليمي، فقد اتفق الطرفان على تأسيس هذه الشراكة وفقاً للشروط والأحكام التالية:
-        </p>
-
-        <h2 class="main-heading">البنود التعاقدية</h2>
-
-        <h3>المادة الأولى: نطاق المشروع والغرض من الشراكة</h3>
-        <div class="space-y-3">
-            <div class="clause-item"><strong>1.1. المشروع:</strong> تطوير وإطلاق نظام ERP المتكامل المتخصص لسوق الذهب (تجزئة وجملة) والأنشطة التجارية الأخرى، مع التوسع المستقبلي في دول الخليج.</div>
-            <div class="clause-item"><strong>1.2. الغرض:</strong> تأسيس كيان قانوني في المملكة العربية السعودية لإدارة المشروع والعمليات في المنطقة.</div>
-        </div>
-
-        <h3>المادة الثانية: الالتزامات المالية والتمويل</h3>
-        <div class="space-y-3">
-            <div class="clause-item">
-                <strong>2.1. التمويل:</strong> يلتزم المستثمر بتقديم مبلغ استثماري إجمالي وقدره <strong>3,164,000 درهم</strong> أو ما يعادله بعملة التأسيس، يغطي التكاليف التشغيلية والتأسيسية لمدة <strong>18 شهراً</strong> وفقاً للخطة المرفقة.
-            </div>
-            <div class="clause-item"><strong>2.2. آلية الدفع:</strong> يتم تحويل كامل المبلغ المذكور إلى <strong>حساب بنكي باسم الكيان القانوني للمشروع</strong> خلال <strong>15 يوماً</strong> من تاريخ توقيع هذا العقد.</div>
-            <div class="clause-item">
-                <strong>2.3. حساب الإشراف المشترك:</strong> يخضع الحساب البنكي لإشراف مشترك بين الطرفين لضمان الشفافية وحماية الضمان المالي.
-            </div>
-        </div>
-
-        <!-- باقي البنود تبقى كما هي دون حذف أو تعديل في المضمون -->
-
-        <h2>توقيعات الأطراف</h2>
-        <div class="signature-line">
-            <div class="signature-block">
-                <p class="font-bold">توقيع الطرف الأول (AMARSOFT)</p>
-                <p>الاسم: ____________________________</p>
-                <p>الوظيفة: ____________________________</p>
-                <p>التوقيع: <hr></p>
-                <p>الختم: <hr></p>
-            </div>
-            <div class="signature-block">
-                <p class="font-bold">توقيع الطرف الثاني (المستثمر)</p>
-                <p>الاسم: ____________________________</p>
-                <p>التوقيع: <hr></p>
-            </div>
-        </div>
+<div class="contract-section">
+    <h2>المرفقات التفصيلية للعقد</h2>
+    <div class="note-box">
+        تعتبر هذه المرفقات جزءًا لا يتجزأ من العقد وملزمة للطرفين، وتشمل خطة العمل والتكاليف والإيرادات المتفق عليها.
     </div>
-</body>
-</html>
+
+    <h3>المرفق رقم (1): خطة العمل والتكاليف التفصيلية (لمدة 18 شهراً)</h3>
+
+    <table>
+        <tr>
+            <th>البند</th>
+            <th>التفاصيل</th>
+            <th>الكمية / المدة</th>
+            <th>المجموع (درهم)</th>
+        </tr>
+        <tr>
+            <td><strong>التكاليف التأسيسية (1-6 أشهر)</strong></td>
+            <td><strong>الإجمالي</strong></td>
+            <td>-</td>
+            <td><strong>1,700,000</strong></td>
+        </tr>
+        <tr>
+            <td>تطوير النظام</td>
+            <td>تكلفة تطوير النظام بالكامل للنسخة الأولى</td>
+            <td>6 أشهر</td>
+            <td>360,000</td>
+        </tr>
+        <tr>
+            <td>راتب مدير المشروع</td>
+            <td>راتب مدير المشروع خلال مرحلة التطوير</td>
+            <td>6 أشهر</td>
+            <td>90,000</td>
+        </tr>
+        <tr>
+            <td>تجهيز المكتب</td>
+            <td>تأثيث وتجهيز المقر الرئيسي (دفعة واحدة)</td>
+            <td>دفعة واحدة</td>
+            <td>150,000</td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="3" style="text-align:center;">الإجمالي الكلي</td>
+            <td>1,700,000</td>
+        </tr>
+    </table>
+</div>
