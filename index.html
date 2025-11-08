@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>مسودة عقد شراكة استثمارية</title>
     <style>
-        /* --- قواعد عامة وتصميم حديث محلي (بدون مكتبات خارجية) --- */
         :root{
             --bg-page: #f3f4f6;
             --card-bg: #ffffff;
@@ -26,7 +25,7 @@
             margin:0;
             padding:0;
             background:var(--bg-page);
-            font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", "Arial", sans-serif;
+            font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif;
             color:var(--text);
             -webkit-font-smoothing:antialiased;
             -moz-osx-font-smoothing:grayscale;
@@ -42,7 +41,7 @@
             display:flex;
             gap:12px;
             justify-content:center;
-            margin-bottom:18px;
+            margin:0 0 18px 0;
             flex-wrap:wrap;
         }
 
@@ -55,9 +54,6 @@
             cursor:pointer;
             font-weight:600;
             box-shadow:0 6px 18px rgba(29,78,216,0.12);
-        }
-        .btn.secondary{
-            background:linear-gradient(90deg,var(--accent-light),var(--accent-blue));
         }
         .btn:active{ transform:translateY(1px); }
 
@@ -116,7 +112,7 @@
             margin:12px 0;
         }
 
-        /* table styles */
+        /* TABLES: solid responsive rules */
         .data-table{
             width:100%;
             border-collapse:separate;
@@ -126,6 +122,9 @@
             overflow:hidden;
             box-shadow:0 2px 8px rgba(15,23,42,0.04);
             font-size:0.95rem;
+            display:block;            /* make horizontal scroll on small screens */
+            overflow-x:auto;
+            white-space:nowrap;
         }
         .data-table th{
             background:var(--table-head);
@@ -162,34 +161,37 @@
         }
         .signature-block p{ margin:8px 0; color:var(--text); }
 
-        /* responsive */
+        /* mobile */
         @media (max-width:720px){
             .contract-container{ padding:18px; }
-            h1{ font-size:1.35rem; }
+            h1{ font-size:1.3rem; }
+            h2{ font-size:1.15rem; }
+            h3{ font-size:1rem; }
+            .data-table th,.data-table td{ padding:8px 10px; font-size:0.9rem; }
             .signature-block{ min-width:100%; }
             .print-buttons{ padding:0 8px; }
         }
 
-        /* print rules */
+        /* print */
         @media print{
             body{ background:#fff; }
             .print-buttons{ display:none !important; }
             .contract-container{ box-shadow:none; border:none; padding:0 8px 8px 8px; }
-            /* ensure page breaks nicely */
             .contract-container, table { page-break-inside: avoid; }
         }
     </style>
 </head>
 <body dir="rtl">
     <div class="wrap">
-        <div class="print-buttons" role="toolbar" aria-label="أزرار الطباعة">
-            <button class="btn" id="print-all" title="طباعة كامل العقد">🖨️ طباعة العقد</button>
-            <button class="btn secondary" id="print-attachments" title="طباعة المرفقات فقط">📄 طباعة المرفقات فقط</button>
+
+        <!-- Print buttons (TOP) -->
+        <div class="print-buttons" role="toolbar" aria-label="أزرار الطباعة أعلى الصفحة">
+            <button class="btn" id="print-top">🖨️ طباعة العقد</button>
         </div>
 
         <div id="contract-root" class="contract-container">
-            <!-- ============ هنا يبدأ المحتوى الأصلي (محفوظ كما أرسلته) ============ -->
 
+            <!-- ===== النص الأصلي كما أرسلته (مُدرج بالكامل) ===== -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -197,101 +199,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* تطبيق التنسيق من اليمين لليسار على كامل الجسم */
-        body {
-            font-family: 'Inter', sans-serif;
-            text-align: right;
-        }
-        .contract-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2, h3, h4 {
-            /* لون برتقالي لتمييز العناوين */
-            border-right: 4px solid #FDBA74; 
-            padding-right: 15px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        /* تعديل h2 الرئيسي ليكون باللون الأزرق */
-        .main-heading {
-            border-right: 8px solid #3B82F6 !important;
-        }
-
-        .clause-item {
-            margin-bottom: 10px;
-            padding: 10px;
-            /* لون أزرق لتمييز البنود */
-            border-right: 2px solid #3B82F6; 
-            background-color: #F9FAFB;
-            border-radius: 6px;
-        }
-        .clause-item.modified {
-            /* لون أحمر لتعديل البند */
-            border-right: 3px solid #EF4444; 
-            background-color: #FEF2F2;
-        }
-        .signature-line {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            padding: 0 20px;
-            flex-wrap: wrap;
-        }
-        .signature-block {
-            width: 48%;
-            min-width: 300px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .signature-block hr {
-            margin-top: 5px;
-            border: 1px solid #333;
-        }
-        /* إزالة النجمة الافتراضية لقائمة البنود الرئيسية */
-        .no-bullets {
-            list-style: none;
-            padding-right: 0;
-        }
-        /* أنماط الجداول الموحدة */
-        .data-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: right;
-            border-right: none; 
-        }
-        .data-table th {
-            background-color: #3B82F6;
-            color: white;
-            font-weight: 600;
-        }
-        .data-table tr:nth-child(even) {
-            background-color: #F9FAFB;
-        }
-        .data-table tr:last-child td {
-            font-weight: bold;
-            background-color: #EFF6FF;
-            border-top: 2px solid #3B82F6;
-        }
-        .total-row td {
-            background-color: #FDBA74 !important;
-            color: #333;
-            font-weight: 700 !important;
-        }
+        body { font-family: 'Inter', sans-serif; text-align: right; }
+        .contract-container { max-width: 900px; margin: 40px auto; padding: 30px; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        h1, h2, h3, h4 { border-right: 4px solid #FDBA74; padding-right: 15px; margin-top: 25px; margin-bottom: 15px; font-weight: 700; }
+        .main-heading { border-right: 8px solid #3B82F6 !important; }
+        .clause-item { margin-bottom: 10px; padding: 10px; border-right: 2px solid #3B82F6; background-color: #F9FAFB; border-radius: 6px; }
+        .clause-item.modified { border-right: 3px solid #EF4444; background-color: #FEF2F2; }
+        .signature-line { display: flex; justify-content: space-between; margin-top: 50px; padding: 0 20px; flex-wrap: wrap; }
+        .signature-block { width: 48%; min-width: 300px; margin-bottom: 20px; text-align: center; }
+        .signature-block hr { margin-top: 5px; border: 1px solid #333; }
+        .no-bullets { list-style: none; padding-right: 0; }
+        .data-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .data-table th, .data-table td { padding: 12px 15px; text-align: right; border-right: none; }
+        .data-table th { background-color: #3B82F6; color: white; font-weight: 600; }
+        .data-table tr:nth-child(even) { background-color: #F9FAFB; }
+        .data-table tr:last-child td { font-weight: bold; background-color: #EFF6FF; border-top: 2px solid #3B82F6; }
+        .total-row td { background-color: #FDBA74 !important; color: #333; font-weight: 700 !important; }
     </style>
     <title>مسودة عقد شراكة استثمارية</title>
 </head>
@@ -325,14 +248,12 @@
 
         <h2 class="text-xl text-gray-700 mt-8 main-heading">البنود التعاقدية</h2>
 
-        <!-- المادة الأولى: نطاق المشروع والغرض من الشراكة -->
         <h3 class="text-lg font-bold text-gray-800">المادة الأولى: نطاق المشروع والغرض من الشراكة</h3>
         <div class="space-y-3">
             <div class="clause-item"><strong>1.1. المشروع:</strong> تطوير وإطلاق نظام ERP المتكامل المتخصص لسوق الذهب (تجزئة وجملة) والأنشطة التجارية الأخرى، مع التوسع المستقبلي في دول الخليج.</div>
             <div class="clause-item"><strong>1.2. الغرض:</strong> تأسيس كيان قانوني في المملكة العربية السعودية (شركة ذات مسؤولية محدودة أو فرع شركة) لإدارة المشروع والعمليات في المنطقة.</div>
         </div>
 
-        <!-- المادة الثانية: الالتزامات المالية والتمويل -->
         <h3 class="text-lg font-bold text-gray-800">المادة الثانية: الالتزامات المالية والتمويل</h3>
         <div class="space-y-3">
             <div class="clause-item modified bg-red-100">
@@ -342,13 +263,12 @@
             <div class="clause-item">
                 <strong>2.3. حساب الإشراف المشترك (حماية الضمان):</strong> يخضع الحساب البنكي لإشراف مشترك، حيث يتم التعامل معه وفقاً لما يلي:
                 <div class="pr-4 mt-2 space-y-2">
-                    <p class="text-sm"><strong>أ. المصروفات المجدولة (الثابتة):</strong> المصروفات المذكورة تفصيلاً في الخطة المرفقة (مثل الرواتب والإيجارات) لا تتطلب موافقة مسبقة من المستثمر، ويتم إطلاع المستثمر على كشف بالمعاملات الشهري</p>
+                    <p class="text-sm"><strong>أ. المصروفات المجدولة (الثابتة):</strong> المصروفات المذكورة تفصيلاً في الخطة المرفقة (مثل الرواتب والإيجارات) لا تتطلب موافقة مسبقة من المستثمر، ويتم إطلاع المستثمر على كشف بالمعاملات الشهرية.</p>
                     <p class="text-sm"><strong>ب. المصروفات غير المجدولة:</strong> لا يجوز سحب أي مبالغ للمصروفات الرأسمالية أو غير المجدولة (التي تزيد عن <strong>5000 ريال/درهم</strong>) إلا بعد موافقة موثقة من ممثل <strong>AMARSOFT</strong> وممثل <strong>المستثمر</strong>.</p>
                 </div>
             </div>
         </div>
 
-        <!-- المادة الثالثة: توزيع الملكية والأرباح -->
         <h3 class="text-lg font-bold text-gray-800">المادة الثالثة: توزيع الملكية والأرباح</h3>
         <div class="space-y-3">
             <div class="clause-item"><strong>3.1. توزيع الملكية:</strong> تكون حصص ملكية الكيان القانوني للمشروع موزعة بين الطرفين على النحو التالي:
@@ -360,7 +280,6 @@
             <div class="clause-item"><strong>3.2. توزيع الأرباح:</strong> توزع الأرباح الصافية بعد خصم كافة التكاليف التشغيلية والضريبية وفقاً لنسب الملكية المذكورة في البند (3.1).</div>
         </div>
 
-        <!-- المادة الرابعة: مسؤوليات ومهام الأطراف -->
         <h3 class="text-lg font-bold text-gray-800">المادة الرابعة: مسؤوليات ومهام الأطراف</h3>
         <div class="space-y-3">
             <div class="clause-item"><strong>4.1. التزامات AMARSOFT (60%):</strong> الالتزام الكامل بجميع أعمال التطوير التقني، التحديثات، التشغيل اليومي، الدعم الفني، وإدارة فرق العمل (التطوير والمبيعات)، وتقديم نظام ERP الأساسي والمحافظة على حقوق الملكية الفكرية.</div>
@@ -369,7 +288,6 @@
             </div>
         </div>
 
-        <!-- المادة الخامسة: الملكية الفكرية (IP) -->
         <h3 class="text-lg font-bold text-gray-800">المادة الخامسة: الملكية الفكرية (IP)</h3>
         <div class="space-y-3">
             <div class="clause-item">
@@ -382,46 +300,37 @@
             </div>
         </div>
 
-        <!-- المادة السادسة: الإدارة والرقابة -->
         <h3 class="text-lg font-bold text-gray-800">المادة السادسة: الإدارة والرقابة</h3>
         <div class="space-y-3">
             <div class="clause-item"><strong>6.1. مجلس الإدارة:</strong> يتم تشكيل مجلس إدارة مكون من <strong>3 أشخاص</strong>، يمثل فيه الطرفان بنسبة ملكيتهما.</div>
             <div class="clause-item"><strong>6.2. صلاحيات الإدارة التنفيذية:</strong> تكون الإدارة التنفيذية والتقنية اليومية تحت مسؤولية ممثل AMARSOFT.</div>
         </div>
 
-        <!-- المادة السابعة: مدة العقد والإنهاء -->
         <h3 class="text-lg font-bold text-gray-800">المادة السابعة: مدة العقد والإنهاء</h3>
         <div class="space-y-3">
             <div class="clause-item"><strong>7.1. مدة العقد:</strong> تبدأ من تاريخ التوقيع وتستمر لمدة <strong>خمس سنوات</strong>، قابلة للتجديد.</div>
             <div class="clause-item"><strong>7.3. آلية التخارج:</strong> في حال رغبة أحد الطرفين في بيع حصته، يلتزم بتقديم عرض البيع أولاً للطرف الآخر بنفس الشروط (حق الشفعة).</div>
         </div>
 
-        <!-- المادة الثامنة: القانون الحاكم وتسوية النزاعات -->
         <h3 class="text-lg font-bold text-gray-800">المادة الثامنة: القانون الحاكم وتسوية النزاعات</h3>
         <div class="space-y-3">
             <div class="clause-item"><strong>8.1. القانون الحاكم:</strong> يخضع هذا العقد لأحكام قوانين <strong>المملكة العربية السعودية</strong>.</div>
             <div class="clause-item"><strong>8.2. تسوية النزاعات:</strong> يتم الحل ودياً أولاً. إذا تعذر، يتم اللجوء إلى <strong>التحكيم</strong> أو <strong>المحاكم المختصة</strong> في <strong>جدة</strong>.</div>
         </div>
 
-        <!-- ************************************ -->
-        <!-- المرفقات المدمجة بالتنسيق الموحد -->
-        <!-- ************************************ -->
         <h2 class="text-2xl text-gray-800 mt-10 main-heading">المرفقات التفصيلية للعقد</h2>
-        
         <p class="text-sm text-gray-600 mb-6 border-r-4 border-yellow-500 pr-3 bg-yellow-50 p-2 rounded-md">
             تعتبر هذه المرفقات جزءاً لا يتجزأ من العقد ومُلزمة للطرفين، وتشمل خطة العمل والتكاليف والإيرادات المتفق عليها.
         </p>
 
-        <!-- المرفق رقم 1: خطة التكاليف -->
         <h3 class="text-xl text-gray-700">المرفق رقم (1): خطة العمل والتكاليف التفصيلية (لـ 18 شهراً)</h3>
-
         <table class="data-table mb-8">
             <thead>
                 <tr>
                     <th class="rounded-tr-lg">البند</th>
                     <th>التفاصيل</th>
                     <th>الكمية / المدة</th>
-                    <th class="rounded-tل-lg">المجموع (درهم)</th>
+                    <th class="rounded-tl-lg">المجموع (درهم)</th>
                 </tr>
             </thead>
             <tbody>
@@ -473,16 +382,14 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr class="total-row bg-blue-100 text-blue-800">
-                    <td colspan="3" class="text-left font-extrabold">إجمالي التمويل المطلوب (18 شهراً)</td>
-                    <td class="font-extrabold text-2xl">3,164,000 درهم</td>
+                <tr class="total-row">
+                    <td colspan="3" class="text-left">إجمالي التمويل المطلوب (18 شهراً)</td>
+                    <td>3,164,000 درهم</td>
                 </tr>
             </tfoot>
         </table>
 
-        <!-- تفاصيل الرواتب الشهرية (من الشهر 7 إلى 18) -->
         <h4 class="text-lg font-semibold text-gray-700">تفاصيل توزيع الرواتب والميزانية الشهرية (122,000 درهم)</h4>
-        
         <table class="data-table mb-8">
             <thead>
                 <tr>
@@ -501,25 +408,19 @@
                 <tr><td>مدرب موارد بشرية</td><td>1</td><td>6,000</td><td>6,000</td></tr>
                 <tr><td>موظفة استقبال</td><td>1</td><td>5,000</td><td>5,000</td></tr>
                 <tr><td>مدير المشروع</td><td>1</td><td>15,000</td><td>15,000</td></tr>
-                <tr class="font-bold bg-green-50">
-                    <td>ميزانية تشغيل/تسويق</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>17,000</td>
+                <tr class="font-bold">
+                    <td>ميزانية تشغيل/تسويق</td><td>-</td><td>-</td><td>17,000</td>
                 </tr>
             </tbody>
             <tfoot>
-                <tr class="total-row bg-blue-100 text-blue-800">
-                    <td colspan="3" class="text-left font-extrabold">الإجمالي الشهري للتشغيل</td>
-                    <td class="font-extrabold">122,000 درهم</td>
+                <tr class="total-row">
+                    <td colspan="3" class="text-left">الإجمالي الشهري للتشغيل</td>
+                    <td>122,000 درهم</td>
                 </tr>
             </tfoot>
         </table>
 
-
-        <!-- المرفق رقم 2: الإيرادات المتوقعة -->
         <h3 class="text-xl text-gray-700">المرفق رقم (2): جدول الإيرادات المتوقعة (خلال أول 18 شهراً)</h3>
-        
         <table class="data-table mb-8">
             <thead>
                 <tr>
@@ -530,40 +431,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>بيع النظام (ERP)</td>
-                    <td>500 عميل</td>
-                    <td>10,000 درهم</td>
-                    <td>5,000,000</td>
-                </tr>
-                <tr>
-                    <td>أرباح الأجهزة والخدمات</td>
-                    <td>12 شهر (من الشهر 7 إلى 18)</td>
-                    <td>20,000 درهم شهريًا</td>
-                    <td>240,000</td>
-                </tr>
-                <tr>
-                    <td>اشتراكات سنوية</td>
-                    <td>تبدأ بعد سنة</td>
-                    <td>غير محسوبة</td>
-                    <td>0</td>
-                </tr>
+                <tr><td>بيع النظام (ERP)</td><td>500 عميل</td><td>10,000 درهم</td><td>5,000,000</td></tr>
+                <tr><td>أرباح الأجهزة والخدمات</td><td>12 شهر (من الشهر 7 إلى 18)</td><td>20,000 درهم شهريًا</td><td>240,000</td></tr>
+                <tr><td>اشتراكات سنوية</td><td>تبدأ بعد سنة</td><td>غير محسوبة</td><td>0</td></tr>
             </tbody>
             <tfoot>
-                <tr class="total-row bg-green-100 text-green-800">
-                    <td colspan="3" class="text-left font-extrabold">إجمالي الإيرادات المتوقعة (18 شهراً)</td>
-                    <td class="font-extrabold text-2xl">5,240,000 درهم</td>
+                <tr class="total-row">
+                    <td colspan="3" class="text-left">إجمالي الإيرادات المتوقعة (18 شهراً)</td>
+                    <td>5,240,000 درهم</td>
                 </tr>
-                <tr class="total-row bg-yellow-100 text-yellow-800">
-                    <td colspan="3" class="text-left font-extrabold">صافي الربح التقريبي المتوقع</td>
-                    <td class="font-extrabold text-2xl">2,076,000 درهم</td>
+                <tr class="total-row">
+                    <td colspan="3" class="text-left">صافي الربح التقريبي المتوقع</td>
+                    <td>2,076,000 درهم</td>
                 </tr>
             </tfoot>
         </table>
 
-        <!-- المرفق رقم 3: قائمة الأهداف الرئيسية -->
         <h3 class="text-xl text-gray-700">المرفق رقم (3): قائمة الأهداف الرئيسية (خلال 30 شهراً)</h3>
-
         <ul class="no-bullets space-y-4 pr-0 text-sm text-gray-700">
             <li class="clause-item">
                 <p class="font-bold text-blue-600">أولاً: تطوير النظام</p>
@@ -587,8 +471,6 @@
             </li>
         </ul>
 
-
-        <!-- التوقيعات -->
         <h2 class="text-xl text-gray-700 mt-10">توقيعات الأطراف</h2>
         <div class="signature-line">
             <div class="signature-block">
@@ -604,72 +486,21 @@
                 <p>التوقيع: <hr></p>
             </div>
         </div>
-
     </div>
 </body>
 </html>
+            <!-- ===== نهاية النص الأصلي ===== -->
+        </div>
 
-            <!-- ============ نهاية المحتوى الأصلي ============ -->
+        <!-- Print buttons (BOTTOM) -->
+        <div class="print-buttons" role="toolbar" aria-label="أزرار الطباعة أسفل الصفحة">
+            <button class="btn" id="print-bottom">🖨️ طباعة العقد</button>
         </div>
     </div>
 
     <script>
-        // Print full document
-        document.getElementById('print-all').addEventListener('click', function(){
-            window.print();
-        });
-
-        // Print attachments only: show only the attachments section (starting from the h2 that contains "المرفقات التفصيلية للعقد")
-        document.getElementById('print-attachments').addEventListener('click', function(){
-            const root = document.getElementById('contract-root');
-
-            // Find the attachments heading by text content
-            // We'll hide siblings before that heading, and keep that heading and everything after it.
-            // Because the content includes nested structure, we search for element containing the exact attachments title.
-            const attachmentsSelector = Array.from(root.querySelectorAll('*')).find(el => {
-                return el.tagName && el.tagName.toLowerCase() === 'h2' && el.textContent && el.textContent.trim().startsWith('المرفقات التفصيلية للعقد');
-            });
-
-            if(!attachmentsSelector){
-                // fallback: if not found, just print full document
-                window.print();
-                return;
-            }
-
-            // gather all direct children of root
-            const children = Array.from(root.children);
-            // determine index of attachments start (first element that contains the attachmentsSelector)
-            let startIndex = children.indexOf(attachmentsSelector);
-            if(startIndex === -1){
-                // attachmentsSelector might be deeper inside - find its nearest ancestor that is a direct child
-                let ancestor = attachmentsSelector;
-                while(ancestor && ancestor.parentElement !== root){
-                    ancestor = ancestor.parentElement;
-                }
-                startIndex = ancestor ? children.indexOf(ancestor) : 0;
-            }
-
-            // hide everything before startIndex
-            const hidden = [];
-            for(let i=0;i<startIndex;i++){
-                const el = children[i];
-                if(el && el.style){
-                    el._oldDisplay = el.style.display || '';
-                    el.style.display = 'none';
-                    hidden.push(el);
-                }
-            }
-
-            // trigger print, then restore
-            window.print();
-
-            // restore display after a small timeout (some browsers require delay)
-            setTimeout(() => {
-                hidden.forEach(el => {
-                    el.style.display = el._oldDisplay || '';
-                });
-            }, 500);
-        });
+        document.getElementById('print-top').addEventListener('click', function(){ window.print(); });
+        document.getElementById('print-bottom').addEventListener('click', function(){ window.print(); });
     </script>
 </body>
 </html>
