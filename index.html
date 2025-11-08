@@ -1,506 +1,255 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>مسودة عقد شراكة استثمارية</title>
-    <style>
-        :root{
-            --bg-page: #f3f4f6;
-            --card-bg: #ffffff;
-            --accent-blue: #1d4ed8;
-            --accent-light: #60a5fa;
-            --accent-gold: #f59e0b;
-            --muted: #6b7280;
-            --text: #1f2937;
-            --clause-bg: #f9fafb;
-            --modified-bg: #fef2f2;
-            --table-alt: #f9fafb;
-            --table-head: #1d4ed8;
-            --total-bg: #fef9c3;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مسودة عقد شراكة استثمارية</title>
+  <style>
+    :root{
+      --bg-page:#f3f4f6; --card-bg:#fff; --accent-blue:#1d4ed8; --accent-light:#60a5fa;
+      --accent-gold:#f59e0b; --muted:#6b7280; --text:#1f2937; --clause-bg:#f9fafb;
+      --modified-bg:#fef2f2; --table-alt:#f9fafb; --table-head:#1d4ed8; --total-bg:#fef9c3;
+    }
+    html,body{margin:0;padding:0;background:var(--bg-page);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:980px;margin:36px auto;padding:28px}
+    .print-buttons{display:flex;gap:12px;justify-content:center;margin:0 0 18px 0;flex-wrap:wrap}
+    .btn{background:var(--accent-blue);color:#fff;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;font-weight:600;box-shadow:0 6px 18px rgba(29,78,216,.12)}
+    .btn:active{transform:translateY(1px)}
+    .contract-container{background:var(--card-bg);border-radius:12px;padding:34px;box-shadow:0 14px 30px rgba(15,23,42,.06);border-top:6px solid var(--accent-blue)}
+    h1,h2,h3,h4{margin:22px 0 12px 0;font-weight:700;line-height:1.2}
+    h1{color:#153e75;font-size:1.85rem;padding-right:12px;border-right:6px solid var(--accent-gold)}
+    h2{color:var(--accent-blue);font-size:1.25rem;padding-right:10px;border-right:4px solid var(--accent-light)}
+    h3{color:#374151;font-size:1.05rem;padding-right:8px;border-right:3px solid #eab308}
+    h4{color:#374151;font-size:1rem;padding-right:8px;border-right:3px solid #eab308}
+    p{color:var(--muted);font-size:.96rem;line-height:1.7;margin:6px 0}
+    .clause-item{background:var(--clause-bg);border-right:3px solid var(--accent-light);padding:10px 14px;margin-bottom:10px;border-radius:8px}
+    .clause-item.modified{background:var(--modified-bg);border-right-color:#dc2626}
+    .no-bullets{list-style:none;padding-right:0;margin:6px 0}
+    .no-bullets li{margin:6px 0;color:var(--muted)}
+    .highlight{background:#fff7ed;border-right:4px solid var(--accent-gold);padding:12px;border-radius:8px;color:var(--muted);margin:12px 0}
 
-        html,body{
-            height:100%;
-            margin:0;
-            padding:0;
-            background:var(--bg-page);
-            font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif;
-            color:var(--text);
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-        }
+    /* ==== جداول متجاوبة RTL ثابتة ==== */
+    .data-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(15,23,42,.04);font-size:.95rem;table-layout:fixed;direction:rtl}
+    .data-table th{background:var(--table-head);color:#fff;padding:12px 14px;text-align:right;font-weight:700;vertical-align:middle}
+    .data-table td{padding:12px 14px;text-align:right;border-top:1px solid #eef2f7;color:var(--text);background:#fff;vertical-align:middle;word-break:normal;white-space:normal}
+    .data-table tr:nth-child(even) td{background:var(--table-alt)}
+    .total-row td{background:var(--total-bg)!important;font-weight:700;color:#78350f!important}
+    /* توزيع أعمدة شائع (4 أعمدة) */
+    .data-table.col4 th:nth-child(1), .data-table.col4 td:nth-child(1){width:32%}
+    .data-table.col4 th:nth-child(2), .data-table.col4 td:nth-child(2){width:28%}
+    .data-table.col4 th:nth-child(3), .data-table.col4 td:nth-child(3){width:20%}
+    .data-table.col4 th:nth-child(4), .data-table.col4 td:nth-child(4){width:20%}
+    /* دعم السحب الأفقي عند الضرورة دون كسر التنسيق */
+    .table-responsive{overflow-x:auto;border-radius:10px}
+    .table-responsive > table{min-width:720px}
 
-        .wrap{
-            max-width:980px;
-            margin:36px auto;
-            padding:28px;
-        }
+    .signature-line{display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap;margin-top:40px}
+    .signature-block{flex:1 1 46%;min-width:260px;background:#f9fafb;border:1px dashed #cbd5e1;padding:16px;border-radius:8px;text-align:center}
+    .signature-block p{margin:8px 0;color:var(--text)}
 
-        .print-buttons{
-            display:flex;
-            gap:12px;
-            justify-content:center;
-            margin:0 0 18px 0;
-            flex-wrap:wrap;
-        }
+    /* mobile */
+    @media (max-width:720px){
+      .contract-container{padding:18px}
+      h1{font-size:1.3rem} h2{font-size:1.15rem} h3{font-size:1rem}
+      .data-table th,.data-table td{padding:8px 10px;font-size:.9rem}
+      .table-responsive > table{min-width:600px}
+    }
 
-        .btn{
-            background:var(--accent-blue);
-            color:#fff;
-            border:none;
-            padding:10px 18px;
-            border-radius:8px;
-            cursor:pointer;
-            font-weight:600;
-            box-shadow:0 6px 18px rgba(29,78,216,0.12);
-        }
-        .btn:active{ transform:translateY(1px); }
-
-        .contract-container{
-            background:var(--card-bg);
-            border-radius:12px;
-            padding:34px;
-            box-shadow:0 14px 30px rgba(15,23,42,0.06);
-            border-top:6px solid var(--accent-blue);
-        }
-
-        h1,h2,h3,h4{ margin:22px 0 12px 0; font-weight:700; line-height:1.2; }
-        h1{
-            color:#153e75;
-            font-size:1.85rem;
-            padding-right:12px;
-            border-right:6px solid var(--accent-gold);
-        }
-        h2{
-            color:var(--accent-blue);
-            font-size:1.25rem;
-            padding-right:10px;
-            border-right:4px solid var(--accent-light);
-        }
-        h3{
-            color:#374151;
-            font-size:1.05rem;
-            padding-right:8px;
-            border-right:3px solid #eab308;
-        }
-        h4{ color:#374151; font-size:1rem; padding-right:8px; border-right:3px solid #eab308; }
-
-        p{ color:var(--muted); font-size:0.96rem; line-height:1.7; margin:6px 0; }
-
-        .clause-item{
-            background:var(--clause-bg);
-            border-right:3px solid var(--accent-light);
-            padding:10px 14px;
-            margin-bottom:10px;
-            border-radius:8px;
-        }
-        .clause-item.modified{
-            background:var(--modified-bg);
-            border-right-color:#dc2626;
-        }
-
-        .no-bullets{ list-style:none; padding-right:0; margin:6px 0; }
-        .no-bullets li{ margin:6px 0; color:var(--muted); }
-
-        .highlight{
-            background:#fff7ed;
-            border-right:4px solid var(--accent-gold);
-            padding:12px;
-            border-radius:8px;
-            color:var(--muted);
-            margin:12px 0;
-        }
-
-        /* TABLES: solid responsive rules */
-        .data-table{
-            width:100%;
-            border-collapse:separate;
-            border-spacing:0;
-            margin-top:12px;
-            border-radius:10px;
-            overflow:hidden;
-            box-shadow:0 2px 8px rgba(15,23,42,0.04);
-            font-size:0.95rem;
-            display:block;            /* make horizontal scroll on small screens */
-            overflow-x:auto;
-            white-space:nowrap;
-        }
-        .data-table th{
-            background:var(--table-head);
-            color:#fff;
-            padding:12px 14px;
-            text-align:right;
-            font-weight:600;
-        }
-        .data-table td{
-            padding:12px 14px;
-            text-align:right;
-            border-top:1px solid #eef2f7;
-            color:var(--text);
-            background:#fff;
-        }
-        .data-table tr:nth-child(even) td{ background:var(--table-alt); }
-        .total-row td{ background:var(--total-bg) !important; font-weight:700; color:#78350f !important; }
-
-        .signature-line{
-            display:flex;
-            gap:18px;
-            justify-content:space-between;
-            flex-wrap:wrap;
-            margin-top:40px;
-        }
-        .signature-block{
-            flex:1 1 46%;
-            min-width:260px;
-            background:#f9fafb;
-            border:1px dashed #cbd5e1;
-            padding:16px;
-            border-radius:8px;
-            text-align:center;
-        }
-        .signature-block p{ margin:8px 0; color:var(--text); }
-
-        /* mobile */
-        @media (max-width:720px){
-            .contract-container{ padding:18px; }
-            h1{ font-size:1.3rem; }
-            h2{ font-size:1.15rem; }
-            h3{ font-size:1rem; }
-            .data-table th,.data-table td{ padding:8px 10px; font-size:0.9rem; }
-            .signature-block{ min-width:100%; }
-            .print-buttons{ padding:0 8px; }
-        }
-
-        /* print */
-        @media print{
-            body{ background:#fff; }
-            .print-buttons{ display:none !important; }
-            .contract-container{ box-shadow:none; border:none; padding:0 8px 8px 8px; }
-            .contract-container, table { page-break-inside: avoid; }
-        }
-    </style>
+    /* print */
+    @media print{
+      body{background:#fff}
+      .print-buttons{display:none!important}
+      .contract-container{box-shadow:none;border:none;padding:0 8px 8px 8px}
+      .contract-container, table{page-break-inside:avoid}
+    }
+  </style>
 </head>
 <body dir="rtl">
-    <div class="wrap">
+  <div class="wrap">
 
-        <!-- Print buttons (TOP) -->
-        <div class="print-buttons" role="toolbar" aria-label="أزرار الطباعة أعلى الصفحة">
-            <button class="btn" id="print-top">🖨️ طباعة العقد</button>
-        </div>
-
-        <div id="contract-root" class="contract-container">
-
-            <!-- ===== النص الأصلي كما أرسلته (مُدرج بالكامل) ===== -->
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { font-family: 'Inter', sans-serif; text-align: right; }
-        .contract-container { max-width: 900px; margin: 40px auto; padding: 30px; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        h1, h2, h3, h4 { border-right: 4px solid #FDBA74; padding-right: 15px; margin-top: 25px; margin-bottom: 15px; font-weight: 700; }
-        .main-heading { border-right: 8px solid #3B82F6 !important; }
-        .clause-item { margin-bottom: 10px; padding: 10px; border-right: 2px solid #3B82F6; background-color: #F9FAFB; border-radius: 6px; }
-        .clause-item.modified { border-right: 3px solid #EF4444; background-color: #FEF2F2; }
-        .signature-line { display: flex; justify-content: space-between; margin-top: 50px; padding: 0 20px; flex-wrap: wrap; }
-        .signature-block { width: 48%; min-width: 300px; margin-bottom: 20px; text-align: center; }
-        .signature-block hr { margin-top: 5px; border: 1px solid #333; }
-        .no-bullets { list-style: none; padding-right: 0; }
-        .data-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .data-table th, .data-table td { padding: 12px 15px; text-align: right; border-right: none; }
-        .data-table th { background-color: #3B82F6; color: white; font-weight: 600; }
-        .data-table tr:nth-child(even) { background-color: #F9FAFB; }
-        .data-table tr:last-child td { font-weight: bold; background-color: #EFF6FF; border-top: 2px solid #3B82F6; }
-        .total-row td { background-color: #FDBA74 !important; color: #333; font-weight: 700 !important; }
-    </style>
-    <title>مسودة عقد شراكة استثمارية</title>
-</head>
-<body dir="rtl" class="bg-gray-100">
-    <div class="contract-container">
-        <h1 class="text-3xl text-gray-800 main-heading pr-4">مسودة عقد شراكة واستثمار في مشروع AMARSOFT الإقليمي</h1>
-
-        <h2 class="text-xl text-gray-700">مقدمة</h2>
-        <p class="text-sm text-gray-600 mb-6">
-            تم تحرير هذا العقد في مدينة جدة بتاريخ 7 نوفمبر 2025 بين الطرفين المذكورين أدناه، وذلك لتنظيم العلاقة والشراكة في مشروع <strong>AMARSOFT</strong> لتطوير وإطلاق نظام تخطيط موارد المؤسسات (ERP) المتكامل في المملكة العربية السعودية ودول الخليج.
-        </p>
-
-        <h3 class="text-lg font-semibold text-blue-600">الطرف الأول (المطور والمشغل):</h3>
-        <ul class="no-bullets space-y-2 pr-4 mb-4 text-sm text-gray-700">
-            <li><strong>الاسم:</strong> شركة AMARSOFT</li>
-            <li><strong>ممثلها:</strong> سالم عبود سعيد بن سعد</li>
-            <li><strong>العنوان:</strong> الشارقة النهدة مكتب رقم 104 الامارات</li>
-            <li><strong>ويشار إليها في هذا العقد باسم "AMARSOFT"</strong></li>
-        </ul>
-
-        <h3 class="text-lg font-semibold text-blue-600">الطرف الثاني (الممول والشريك):</h3>
-        <ul class="no-bullets space-y-2 pr-4 mb-6 text-sm text-gray-700">
-            <li><strong>الاسم:</strong> السيد/ محمد اليافعي</li>
-            <li><strong>العنوان:</strong> جدة السعودية</li>
-            <li><strong>ويشار إليه في هذا العقد باسم "المستثمر"</strong></li>
-        </ul>
-
-        <p class="text-sm text-gray-600 bg-yellow-50 p-3 rounded-lg border border-yellow-200">
-            <strong>تمهيد:</strong> بما أن AMARSOFT تمتلك الخبرة التقنية، نظام ERP الجاهز للتطوير، وكامل حقوق الملكية الفكرية للنظام، وبما أن المستثمر يرغب في تمويل المشروع ودعمه بعلاقاته لضمان التوسع في السوق الإقليمي، فقد اتفق الطرفان على تأسيس هذه الشراكة وفقاً للشروط والأحكام التالية:
-        </p>
-
-        <h2 class="text-xl text-gray-700 mt-8 main-heading">البنود التعاقدية</h2>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة الأولى: نطاق المشروع والغرض من الشراكة</h3>
-        <div class="space-y-3">
-            <div class="clause-item"><strong>1.1. المشروع:</strong> تطوير وإطلاق نظام ERP المتكامل المتخصص لسوق الذهب (تجزئة وجملة) والأنشطة التجارية الأخرى، مع التوسع المستقبلي في دول الخليج.</div>
-            <div class="clause-item"><strong>1.2. الغرض:</strong> تأسيس كيان قانوني في المملكة العربية السعودية (شركة ذات مسؤولية محدودة أو فرع شركة) لإدارة المشروع والعمليات في المنطقة.</div>
-        </div>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة الثانية: الالتزامات المالية والتمويل</h3>
-        <div class="space-y-3">
-            <div class="clause-item modified bg-red-100">
-                <strong>2.1. التمويل (مُحدَّث):</strong> يلتزم المستثمر بتقديم مبلغ استثماري إجمالي وقدره <strong>3,164,000 درهم أو ما يعادله بعملة التأسيس</strong> يغطي التكاليف التشغيلية والتأسيسية لمدة <strong>18 شهراً</strong> وفقاً للخطة المرفقة (تم إلغاء بند الاحتياطي الإضافي).
-            </div>
-            <div class="clause-item"><strong>2.2. آلية الدفع:</strong> يتم تحويل كامل المبلغ المذكور في البند (2.1) إلى <strong>حساب بنكي باسم الكيان القانوني للمشروع</strong> خلال <strong>15 يوماً</strong> من تاريخ توقيع هذا العقد.</div>
-            <div class="clause-item">
-                <strong>2.3. حساب الإشراف المشترك (حماية الضمان):</strong> يخضع الحساب البنكي لإشراف مشترك، حيث يتم التعامل معه وفقاً لما يلي:
-                <div class="pr-4 mt-2 space-y-2">
-                    <p class="text-sm"><strong>أ. المصروفات المجدولة (الثابتة):</strong> المصروفات المذكورة تفصيلاً في الخطة المرفقة (مثل الرواتب والإيجارات) لا تتطلب موافقة مسبقة من المستثمر، ويتم إطلاع المستثمر على كشف بالمعاملات الشهرية.</p>
-                    <p class="text-sm"><strong>ب. المصروفات غير المجدولة:</strong> لا يجوز سحب أي مبالغ للمصروفات الرأسمالية أو غير المجدولة (التي تزيد عن <strong>5000 ريال/درهم</strong>) إلا بعد موافقة موثقة من ممثل <strong>AMARSOFT</strong> وممثل <strong>المستثمر</strong>.</p>
-                </div>
-            </div>
-        </div>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة الثالثة: توزيع الملكية والأرباح</h3>
-        <div class="space-y-3">
-            <div class="clause-item"><strong>3.1. توزيع الملكية:</strong> تكون حصص ملكية الكيان القانوني للمشروع موزعة بين الطرفين على النحو التالي:
-                <ul class="no-bullets pr-4 mt-1">
-                    <li><strong>AMARSOFT (الطرف الأول):</strong> نسبة (60%) ستون بالمائة.</li>
-                    <li><strong>المستثمر (الطرف الثاني):</strong> نسبة (40%) أربعون بالمائة.</li>
-                </ul>
-            </div>
-            <div class="clause-item"><strong>3.2. توزيع الأرباح:</strong> توزع الأرباح الصافية بعد خصم كافة التكاليف التشغيلية والضريبية وفقاً لنسب الملكية المذكورة في البند (3.1).</div>
-        </div>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة الرابعة: مسؤوليات ومهام الأطراف</h3>
-        <div class="space-y-3">
-            <div class="clause-item"><strong>4.1. التزامات AMARSOFT (60%):</strong> الالتزام الكامل بجميع أعمال التطوير التقني، التحديثات، التشغيل اليومي، الدعم الفني، وإدارة فرق العمل (التطوير والمبيعات)، وتقديم نظام ERP الأساسي والمحافظة على حقوق الملكية الفكرية.</div>
-            <div class="clause-item">
-                <strong>4.2. التزامات المستثمر (40%):</strong> توفير التمويل، دعم المشروع بالعلاقات الاستراتيجية والمساهمة في تحقيق الأهداف الاستراتيجية المتفق عليها، مع تحديد دوره في **الرقابة الإدارية** دون التدخل في **التنفيذ التشغيلي** اليومي.
-            </div>
-        </div>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة الخامسة: الملكية الفكرية (IP)</h3>
-        <div class="space-y-3">
-            <div class="clause-item">
-                <strong>5.1. الملكية الفكرية الأساسية والتبعية:</strong> يتم التعامل مع حقوق الملكية الفكرية على النحو التالي:
-                <div class="pr-4 mt-2 space-y-2">
-                    <p class="text-sm"><strong>أ. ملكية AMARSOFT (الأصل):</strong> يبقى <strong>الكود المصدري الأساسي (Core Source Code)</strong> للبرنامج، وكامل حقوق الملكية الفكرية المتراكمة قبل تاريخ هذا العقد، بالإضافة إلى العلامة التجارية الأم لـ AMARSOFT، مملوكاً بالكامل لـ <strong>AMARSOFT</strong>.</p>
-                    <p class="text-sm"><strong>ب. ملكية الكيان القانوني (التطوير):</strong> تعود حقوق الملكية الفكرية لكافة <strong>التطويرات والتحسينات والإضافات</strong> التي يتم إجراؤها على النظام <strong>خلال مدة الشراكة وتمويل المستثمر</strong> إلى <strong>الكيان القانوني للمشروع</strong> (الشركة الجديدة).</p>
-                    <p class="text-sm"><strong>ج. ترخيص الاستخدام:</strong> تمنح <strong>AMARSOFT</strong> الكيان القانوني للمشروع ترخيصاً <strong>حصرياً وغير قابل للإلغاء</strong> لاستخدام وتشغيل الكود المصدري الأساسي وتطويره إقليمياً في <strong>السعودية ودول الخليج</strong> طوال مدة الشراكة.</p>
-                </div>
-            </div>
-        </div>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة السادسة: الإدارة والرقابة</h3>
-        <div class="space-y-3">
-            <div class="clause-item"><strong>6.1. مجلس الإدارة:</strong> يتم تشكيل مجلس إدارة مكون من <strong>3 أشخاص</strong>، يمثل فيه الطرفان بنسبة ملكيتهما.</div>
-            <div class="clause-item"><strong>6.2. صلاحيات الإدارة التنفيذية:</strong> تكون الإدارة التنفيذية والتقنية اليومية تحت مسؤولية ممثل AMARSOFT.</div>
-        </div>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة السابعة: مدة العقد والإنهاء</h3>
-        <div class="space-y-3">
-            <div class="clause-item"><strong>7.1. مدة العقد:</strong> تبدأ من تاريخ التوقيع وتستمر لمدة <strong>خمس سنوات</strong>، قابلة للتجديد.</div>
-            <div class="clause-item"><strong>7.3. آلية التخارج:</strong> في حال رغبة أحد الطرفين في بيع حصته، يلتزم بتقديم عرض البيع أولاً للطرف الآخر بنفس الشروط (حق الشفعة).</div>
-        </div>
-
-        <h3 class="text-lg font-bold text-gray-800">المادة الثامنة: القانون الحاكم وتسوية النزاعات</h3>
-        <div class="space-y-3">
-            <div class="clause-item"><strong>8.1. القانون الحاكم:</strong> يخضع هذا العقد لأحكام قوانين <strong>المملكة العربية السعودية</strong>.</div>
-            <div class="clause-item"><strong>8.2. تسوية النزاعات:</strong> يتم الحل ودياً أولاً. إذا تعذر، يتم اللجوء إلى <strong>التحكيم</strong> أو <strong>المحاكم المختصة</strong> في <strong>جدة</strong>.</div>
-        </div>
-
-        <h2 class="text-2xl text-gray-800 mt-10 main-heading">المرفقات التفصيلية للعقد</h2>
-        <p class="text-sm text-gray-600 mb-6 border-r-4 border-yellow-500 pr-3 bg-yellow-50 p-2 rounded-md">
-            تعتبر هذه المرفقات جزءاً لا يتجزأ من العقد ومُلزمة للطرفين، وتشمل خطة العمل والتكاليف والإيرادات المتفق عليها.
-        </p>
-
-        <h3 class="text-xl text-gray-700">المرفق رقم (1): خطة العمل والتكاليف التفصيلية (لـ 18 شهراً)</h3>
-        <table class="data-table mb-8">
-            <thead>
-                <tr>
-                    <th class="rounded-tr-lg">البند</th>
-                    <th>التفاصيل</th>
-                    <th>الكمية / المدة</th>
-                    <th class="rounded-tl-lg">المجموع (درهم)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="total-row">
-                    <td>**أ) التكاليف التأسيسية**</td>
-                    <td colspan="2" class="text-left">**الإجمالي (الأشهر 1-6)**</td>
-                    <td>**1,700,000**</td>
-                </tr>
-                <tr>
-                    <td>تطوير النظام</td>
-                    <td>تكلفة تطوير النظام بالكامل للنسخة الأولى.</td>
-                    <td>6 أشهر</td>
-                    <td>360,000</td>
-                </tr>
-                <tr>
-                    <td>راتب مدير المشروع</td>
-                    <td>راتب مدير المشروع خلال مرحلة التطوير.</td>
-                    <td>6 أشهر</td>
-                    <td>90,000</td>
-                </tr>
-                <tr>
-                    <td>تجهيز مكتب شامل</td>
-                    <td>تأثيث وتجهيز المقر الرئيسي (دفعة واحدة).</td>
-                    <td>دفعة واحدة</td>
-                    <td>150,000</td>
-                </tr>
-                <tr>
-                    <td>أجهزة للعرض والتجربة</td>
-                    <td>أجهزة ومعدات صالة العرض.</td>
-                    <td>دفعة واحدة</td>
-                    <td>500,000</td>
-                </tr>
-                <tr>
-                    <td>تسويق تأسيسي</td>
-                    <td>حملة تسويق تأسيسية وبناء العلامة التجارية.</td>
-                    <td>دفعة واحدة</td>
-                    <td>600,000</td>
-                </tr>
-                <tr class="total-row">
-                    <td>**ب) التكاليف التشغيلية**</td>
-                    <td colspan="2" class="text-left">**الإجمالي (الأشهر 7-18)**</td>
-                    <td>**1,464,000**</td>
-                </tr>
-                <tr>
-                    <td>التشغيل الشهري (رواتب وميزانية)</td>
-                    <td>122,000 درهم شهرياً للفريق التشغيلي والتسويق.</td>
-                    <td>12 شهر</td>
-                    <td>1,464,000</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr class="total-row">
-                    <td colspan="3" class="text-left">إجمالي التمويل المطلوب (18 شهراً)</td>
-                    <td>3,164,000 درهم</td>
-                </tr>
-            </tfoot>
-        </table>
-
-        <h4 class="text-lg font-semibold text-gray-700">تفاصيل توزيع الرواتب والميزانية الشهرية (122,000 درهم)</h4>
-        <table class="data-table mb-8">
-            <thead>
-                <tr>
-                    <th class="rounded-tr-lg">الوظيفة</th>
-                    <th>العدد</th>
-                    <th>الراتب/شخص (درهم)</th>
-                    <th class="rounded-tl-lg">الإجمالي الشهري (درهم)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>مدير تسويق</td><td>1</td><td>15,000</td><td>15,000</td></tr>
-                <tr><td>موظفو مبيعات</td><td>4</td><td>5,000</td><td>20,000</td></tr>
-                <tr><td>محاسب</td><td>1</td><td>8,000</td><td>8,000</td></tr>
-                <tr><td>موظفو دعم فني</td><td>3</td><td>8,000</td><td>24,000</td></tr>
-                <tr><td>مدربي حسابات</td><td>2</td><td>6,000</td><td>12,000</td></tr>
-                <tr><td>مدرب موارد بشرية</td><td>1</td><td>6,000</td><td>6,000</td></tr>
-                <tr><td>موظفة استقبال</td><td>1</td><td>5,000</td><td>5,000</td></tr>
-                <tr><td>مدير المشروع</td><td>1</td><td>15,000</td><td>15,000</td></tr>
-                <tr class="font-bold">
-                    <td>ميزانية تشغيل/تسويق</td><td>-</td><td>-</td><td>17,000</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr class="total-row">
-                    <td colspan="3" class="text-left">الإجمالي الشهري للتشغيل</td>
-                    <td>122,000 درهم</td>
-                </tr>
-            </tfoot>
-        </table>
-
-        <h3 class="text-xl text-gray-700">المرفق رقم (2): جدول الإيرادات المتوقعة (خلال أول 18 شهراً)</h3>
-        <table class="data-table mb-8">
-            <thead>
-                <tr>
-                    <th class="rounded-tr-lg">المصدر</th>
-                    <th>الكمية / المدة</th>
-                    <th>سعر الوحدة التقريبي</th>
-                    <th class="rounded-tl-lg">الإجمالي المتوقع (درهم)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>بيع النظام (ERP)</td><td>500 عميل</td><td>10,000 درهم</td><td>5,000,000</td></tr>
-                <tr><td>أرباح الأجهزة والخدمات</td><td>12 شهر (من الشهر 7 إلى 18)</td><td>20,000 درهم شهريًا</td><td>240,000</td></tr>
-                <tr><td>اشتراكات سنوية</td><td>تبدأ بعد سنة</td><td>غير محسوبة</td><td>0</td></tr>
-            </tbody>
-            <tfoot>
-                <tr class="total-row">
-                    <td colspan="3" class="text-left">إجمالي الإيرادات المتوقعة (18 شهراً)</td>
-                    <td>5,240,000 درهم</td>
-                </tr>
-                <tr class="total-row">
-                    <td colspan="3" class="text-left">صافي الربح التقريبي المتوقع</td>
-                    <td>2,076,000 درهم</td>
-                </tr>
-            </tfoot>
-        </table>
-
-        <h3 class="text-xl text-gray-700">المرفق رقم (3): قائمة الأهداف الرئيسية (خلال 30 شهراً)</h3>
-        <ul class="no-bullets space-y-4 pr-0 text-sm text-gray-700">
-            <li class="clause-item">
-                <p class="font-bold text-blue-600">أولاً: تطوير النظام</p>
-                <p><strong>التفاصيل:</strong> تطوير نظام جديد بالكامل وجاهز للإطلاق. <span class="text-xs text-gray-500">(خلال أول 6 أشهر)</span></p>
-            </li>
-            <li class="clause-item">
-                <p class="font-bold text-blue-600">ثانياً: العملاء في السعودية</p>
-                <p><strong>التفاصيل:</strong> الاستحواذ على <strong>500 عميل</strong> داخل السعودية. <span class="text-xs text-gray-500">(خلال 18 شهراً)</span></p>
-            </li>
-            <li class="clause-item">
-                <p class="font-bold text-blue-600">ثالثاً: التوسع الإقليمي</p>
-                <p><strong>التفاصيل:</strong> التوسع إلى <strong>1,000 عميل</strong> خليجي (الهدف التراكمي). <span class="text-xs text-gray-500">(بعد 30 شهراً من البداية)</span></p>
-            </li>
-            <li class="clause-item">
-                <p class="font-bold text-blue-600">رابعاً: الأقسام الاستراتيجية</p>
-                <p><strong>التفاصيل:</strong> بناء أقسام جديدة (AI، تدقيق، تسويق، روبوتات). <span class="text-xs text-gray-500">(تدريجياً بعد التشغيل)</span></p>
-            </li>
-            <li class="clause-item">
-                <p class="font-bold text-blue-600">خامساً: تنويع القطاعات</p>
-                <p><strong>التفاصيل:</strong> دخول أسواق غير الذهب (جميع القطاعات). <span class="text-xs text-gray-500">(من الشهر 7 فما بعد)</span></p>
-            </li>
-        </ul>
-
-        <h2 class="text-xl text-gray-700 mt-10">توقيعات الأطراف</h2>
-        <div class="signature-line">
-            <div class="signature-block">
-                <p class="font-bold">توقيع الطرف الأول (AMARSOFT)</p>
-                <p>الاسم: \__________________________\_</p>
-                <p>الوظيفة: \_________________________\_</p>
-                <p>التوقيع: <hr></p>
-                <p>الختم: <hr></p>
-            </div>
-            <div class="signature-block">
-                <p class="font-bold">توقيع الطرف الثاني (المستثمر)</p>
-                <p>الاسم: \__________________________\_</p>
-                <p>التوقيع: <hr></p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-            <!-- ===== نهاية النص الأصلي ===== -->
-        </div>
-
-        <!-- Print buttons (BOTTOM) -->
-        <div class="print-buttons" role="toolbar" aria-label="أزرار الطباعة أسفل الصفحة">
-            <button class="btn" id="print-bottom">🖨️ طباعة العقد</button>
-        </div>
+    <!-- زر طباعة أعلى الصفحة -->
+    <div class="print-buttons" role="toolbar" aria-label="أزرار الطباعة أعلى الصفحة">
+      <button class="btn" id="print-top">🖨️ طباعة العقد</button>
     </div>
 
-    <script>
-        document.getElementById('print-top').addEventListener('click', function(){ window.print(); });
-        document.getElementById('print-bottom').addEventListener('click', function(){ window.print(); });
-    </script>
+    <div id="contract-root" class="contract-container">
+
+      <!-- النص الأصلي كما أُرسل (بدون تعديل في المحتوى) -->
+      <h1 class="main-heading">مسودة عقد شراكة واستثمار في مشروع AMARSOFT الإقليمي</h1>
+
+      <h2>مقدمة</h2>
+      <p>تم تحرير هذا العقد في مدينة جدة بتاريخ 7 نوفمبر 2025 بين الطرفين المذكورين أدناه، وذلك لتنظيم العلاقة والشراكة في مشروع <strong>AMARSOFT</strong> لتطوير وإطلاق نظام تخطيط موارد المؤسسات (ERP) المتكامل في المملكة العربية السعودية ودول الخليج.</p>
+
+      <h3>الطرف الأول (المطور والمشغل):</h3>
+      <ul class="no-bullets">
+        <li><strong>الاسم:</strong> شركة AMARSOFT</li>
+        <li><strong>ممثلها:</strong> سالم عبود سعيد بن سعد</li>
+        <li><strong>العنوان:</strong> الشارقة النهدة مكتب رقم 104 الامارات</li>
+        <li><strong>ويشار إليها في هذا العقد باسم "AMARSOFT"</strong></li>
+      </ul>
+
+      <h3>الطرف الثاني (الممول والشريك):</h3>
+      <ul class="no-bullets">
+        <li><strong>الاسم:</strong> السيد/ محمد اليافعي</li>
+        <li><strong>العنوان:</strong> جدة السعودية</li>
+        <li><strong>ويشار إليه في هذا العقد باسم "المستثمر"</strong></li>
+      </ul>
+
+      <p class="highlight"><strong>تمهيد:</strong> بما أن AMARSOFT تمتلك الخبرة التقنية، نظام ERP الجاهز للتطوير، وكامل حقوق الملكية الفكرية للنظام، وبما أن المستثمر يرغب في تمويل المشروع ودعمه بعلاقاته لضمان التوسع في السوق الإقليمي، فقد اتفق الطرفان على تأسيس هذه الشراكة وفقاً للشروط والأحكام التالية:</p>
+
+      <h2>البنود التعاقدية</h2>
+      <h3>المادة الأولى: نطاق المشروع والغرض من الشراكة</h3>
+      <div class="clause-item"><strong>1.1. المشروع:</strong> تطوير وإطلاق نظام ERP المتكامل المتخصص لسوق الذهب (تجزئة وجملة) والأنشطة التجارية الأخرى، مع التوسع المستقبلي في دول الخليج.</div>
+      <div class="clause-item"><strong>1.2. الغرض:</strong> تأسيس كيان قانوني في المملكة العربية السعودية (شركة ذات مسؤولية محدودة أو فرع شركة) لإدارة المشروع والعمليات في المنطقة.</div>
+
+      <h3>المادة الثانية: الالتزامات المالية والتمويل</h3>
+      <div class="clause-item modified">
+        <strong>2.1. التمويل (مُحدَّث):</strong> يلتزم المستثمر بتقديم مبلغ استثماري إجمالي وقدره <strong>3,164,000 درهم أو ما يعادله بعملة التأسيس</strong> يغطي التكاليف التشغيلية والتأسيسية لمدة <strong>18 شهراً</strong> وفقاً للخطة المرفقة (تم إلغاء بند الاحتياطي الإضافي).
+      </div>
+      <div class="clause-item"><strong>2.2. آلية الدفع:</strong> يتم تحويل كامل المبلغ المذكور في البند (2.1) إلى <strong>حساب بنكي باسم الكيان القانوني للمشروع</strong> خلال <strong>15 يوماً</strong> من تاريخ توقيع هذا العقد.</div>
+      <div class="clause-item">
+        <strong>2.3. حساب الإشراف المشترك (حماية الضمان):</strong>
+        <div class="no-bullets">
+          <p><strong>أ.</strong> المصروفات المجدولة (الثابتة) لا تتطلب موافقة مسبقة من المستثمر، ويتم إطلاع المستثمر على كشف بالمعاملات الشهرية.</p>
+          <p><strong>ب.</strong> المصروفات غير المجدولة التي تزيد عن <strong>5000 ريال/درهم</strong> تستلزم موافقة ممثل <strong>AMARSOFT</strong> وممثل <strong>المستثمر</strong>.</p>
+        </div>
+      </div>
+
+      <h3>المادة الثالثة: توزيع الملكية والأرباح</h3>
+      <div class="clause-item"><strong>3.1. توزيع الملكية:</strong>
+        <ul class="no-bullets">
+          <li><strong>AMARSOFT:</strong> 60%</li>
+          <li><strong>المستثمر:</strong> 40%</li>
+        </ul>
+      </div>
+      <div class="clause-item"><strong>3.2. توزيع الأرباح:</strong> وفق نسب الملكية بعد خصم التكاليف.</div>
+
+      <h3>المادة الرابعة: مسؤوليات ومهام الأطراف</h3>
+      <div class="clause-item"><strong>4.1.</strong> التزامات AMARSOFT التقنية والتشغيلية.</div>
+      <div class="clause-item"><strong>4.2.</strong> التزامات المستثمر التمويلية والرقابية دون التدخل التشغيلي اليومي.</div>
+
+      <h3>المادة الخامسة: الملكية الفكرية (IP)</h3>
+      <div class="clause-item"><strong>5.1.</strong> الكود الأساسي ملك AMARSOFT، والتطويرات الجديدة للكيان القانوني مع ترخيص حصري للمنطقة.</div>
+
+      <h3>المادة السادسة: الإدارة والرقابة</h3>
+      <div class="clause-item"><strong>6.1.</strong> مجلس إدارة من 3 أشخاص يمثل الطرفان.</div>
+      <div class="clause-item"><strong>6.2.</strong> الإدارة التنفيذية اليومية تحت ممثل AMARSOFT.</div>
+
+      <h3>المادة السابعة: مدة العقد والإنهاء</h3>
+      <div class="clause-item"><strong>7.1.</strong> مدة 5 سنوات قابلة للتجديد.</div>
+      <div class="clause-item"><strong>7.3.</strong> حق الشفعة عند التخارج.</div>
+
+      <h3>المادة الثامنة: القانون الحاكم وتسوية النزاعات</h3>
+      <div class="clause-item"><strong>8.1.</strong> قوانين المملكة العربية السعودية.</div>
+      <div class="clause-item"><strong>8.2.</strong> وديًا ثم التحكيم/القضاء في جدة.</div>
+
+      <h2>المرفقات التفصيلية للعقد</h2>
+      <p class="highlight">تُعد هذه المرفقات جزءًا لا يتجزأ من العقد.</p>
+
+      <!-- المرفق (1) -->
+      <h3>المرفق رقم (1): خطة العمل والتكاليف التفصيلية (لـ 18 شهراً)</h3>
+      <div class="table-responsive">
+        <table class="data-table col4">
+          <thead>
+            <tr><th>البند</th><th>التفاصيل</th><th>الكمية / المدة</th><th>المجموع (درهم)</th></tr>
+          </thead>
+          <tbody>
+            <tr class="total-row"><td>**أ) التكاليف التأسيسية**</td><td colspan="2">**الإجمالي (الأشهر 1-6)**</td><td>**1,700,000**</td></tr>
+            <tr><td>تطوير النظام</td><td>تكلفة تطوير النظام بالكامل للنسخة الأولى.</td><td>6 أشهر</td><td>360,000</td></tr>
+            <tr><td>راتب مدير المشروع</td><td>راتب مدير المشروع خلال مرحلة التطوير.</td><td>6 أشهر</td><td>90,000</td></tr>
+            <tr><td>تجهيز مكتب شامل</td><td>تأثيث وتجهيز المقر الرئيسي (دفعة واحدة).</td><td>دفعة واحدة</td><td>150,000</td></tr>
+            <tr><td>أجهزة للعرض والتجربة</td><td>أجهزة ومعدات صالة العرض.</td><td>دفعة واحدة</td><td>500,000</td></tr>
+            <tr><td>تسويق تأسيسي</td><td>حملة تسويق تأسيسية وبناء العلامة التجارية.</td><td>دفعة واحدة</td><td>600,000</td></tr>
+            <tr class="total-row"><td>**ب) التكاليف التشغيلية**</td><td colspan="2">**الإجمالي (الأشهر 7-18)**</td><td>**1,464,000**</td></tr>
+            <tr><td>التشغيل الشهري (رواتب وميزانية)</td><td>122,000 درهم شهرياً للفريق التشغيلي والتسويق.</td><td>12 شهر</td><td>1,464,000</td></tr>
+          </tbody>
+          <tfoot>
+            <tr class="total-row"><td colspan="3">إجمالي التمويل المطلوب (18 شهراً)</td><td>3,164,000 درهم</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- تفاصيل الرواتب -->
+      <h4>تفاصيل توزيع الرواتب والميزانية الشهرية (122,000 درهم)</h4>
+      <div class="table-responsive">
+        <table class="data-table col4">
+          <thead>
+            <tr><th>الوظيفة</th><th>العدد</th><th>الراتب/شخص (درهم)</th><th>الإجمالي الشهري (درهم)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>مدير تسويق</td><td>1</td><td>15,000</td><td>15,000</td></tr>
+            <tr><td>موظفو مبيعات</td><td>4</td><td>5,000</td><td>20,000</td></tr>
+            <tr><td>محاسب</td><td>1</td><td>8,000</td><td>8,000</td></tr>
+            <tr><td>موظفو دعم فني</td><td>3</td><td>8,000</td><td>24,000</td></tr>
+            <tr><td>مدربي حسابات</td><td>2</td><td>6,000</td><td>12,000</td></tr>
+            <tr><td>مدرب موارد بشرية</td><td>1</td><td>6,000</td><td>6,000</td></tr>
+            <tr><td>موظفة استقبال</td><td>1</td><td>5,000</td><td>5,000</td></tr>
+            <tr><td>مدير المشروع</td><td>1</td><td>15,000</td><td>15,000</td></tr>
+            <tr class="total-row"><td>ميزانية تشغيل/تسويق</td><td>-</td><td>-</td><td>17,000</td></tr>
+          </tbody>
+          <tfoot>
+            <tr class="total-row"><td colspan="3">الإجمالي الشهري للتشغيل</td><td>122,000 درهم</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- المرفق (2) -->
+      <h3>المرفق رقم (2): جدول الإيرادات المتوقعة (خلال أول 18 شهراً)</h3>
+      <div class="table-responsive">
+        <table class="data-table col4">
+          <thead>
+            <tr><th>المصدر</th><th>الكمية / المدة</th><th>سعر الوحدة التقريبي</th><th>الإجمالي المتوقع (درهم)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>بيع النظام (ERP)</td><td>500 عميل</td><td>10,000 درهم</td><td>5,000,000</td></tr>
+            <tr><td>أرباح الأجهزة والخدمات</td><td>12 شهر (من الشهر 7 إلى 18)</td><td>20,000 درهم شهريًا</td><td>240,000</td></tr>
+            <tr><td>اشتراكات سنوية</td><td>تبدأ بعد سنة</td><td>غير محسوبة</td><td>0</td></tr>
+          </tbody>
+          <tfoot>
+            <tr class="total-row"><td colspan="3">إجمالي الإيرادات المتوقعة (18 شهراً)</td><td>5,240,000 درهم</td></tr>
+            <tr class="total-row"><td colspan="3">صافي الربح التقريبي المتوقع</td><td>2,076,000 درهم</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- المرفق (3) -->
+      <h3>المرفق رقم (3): قائمة الأهداف الرئيسية (خلال 30 شهراً)</h3>
+      <ul class="no-bullets">
+        <li class="clause-item"><strong>أولاً:</strong> تطوير نظام جديد بالكامل وجاهز للإطلاق (أول 6 أشهر).</li>
+        <li class="clause-item"><strong>ثانياً:</strong> 500 عميل داخل السعودية (خلال 18 شهراً).</li>
+        <li class="clause-item"><strong>ثالثاً:</strong> 1,000 عميل خليجي تراكمي (بعد 30 شهراً).</li>
+        <li class="clause-item"><strong>رابعاً:</strong> بناء أقسام جديدة (AI، تدقيق، تسويق، روبوتات).</li>
+        <li class="clause-item"><strong>خامساً:</strong> دخول قطاعات غير الذهب من الشهر 7 فصاعداً.</li>
+      </ul>
+
+      <!-- التوقيعات -->
+      <h2>توقيعات الأطراف</h2>
+      <div class="signature-line">
+        <div class="signature-block">
+          <p class="font-bold">توقيع الطرف الأول (AMARSOFT)</p>
+          <p>الاسم: \__________________________\_</p>
+          <p>الوظيفة: \_________________________\_</p>
+          <p>التوقيع: <hr></p>
+          <p>الختم: <hr></p>
+        </div>
+        <div class="signature-block">
+          <p class="font-bold">توقيع الطرف الثاني (المستثمر)</p>
+          <p>الاسم: \__________________________\_</p>
+          <p>التوقيع: <hr></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- زر طباعة أسفل الصفحة -->
+    <div class="print-buttons" role="toolbar" aria-label="أزرار الطباعة أسفل الصفحة">
+      <button class="btn" id="print-bottom">🖨️ طباعة العقد</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('print-top').addEventListener('click', function(){ window.print(); });
+    document.getElementById('print-bottom').addEventListener('click', function(){ window.print(); });
+  </script>
 </body>
 </html>
